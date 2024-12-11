@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container">
+    <h2>Kategoriler</h2>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Kategori Adı</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>MVC</td>
+            <td><a href="#" class="btn btn-danger">Sil</a> </td>
+            <td><a href="#" class="btn btn-info">Güncelle</a> </td>
+        </tr>
+
+        <tr>
+            <td>2</td>
+            <td>.Net Core</td>
+            <td><a href="#" class="btn btn-danger">Sil</a> </td>
+            <td><a href="#" class="btn btn-info">Güncelle</a> </td>
+        </tr>
+    </table>
+
+    <br />
+    <a href="/Category/AddCategory" class="btn btn-primary">Yeni Kategori Ekle</a>
+
+</div>
