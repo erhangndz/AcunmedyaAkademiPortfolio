@@ -1,6 +1,7 @@
-﻿
+﻿@model List<AcunmedyaAkademiPortfolio.Models.TblCategory>
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
 }
 
 
@@ -14,19 +15,20 @@
             <th>Sil</th>
             <th>Güncelle</th>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>MVC</td>
-            <td><a href="#" class="btn btn-danger">Sil</a> </td>
-            <td><a href="#" class="btn btn-info">Güncelle</a> </td>
-        </tr>
 
-        <tr>
-            <td>2</td>
-            <td>.Net Core</td>
-            <td><a href="#" class="btn btn-danger">Sil</a> </td>
-            <td><a href="#" class="btn btn-info">Güncelle</a> </td>
-        </tr>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <th>@count</th>
+                <td>@item.CategoryName</td>
+                <td><a href="/Category/DeleteCategory/@item.CategoryId" class="btn btn-danger">Sil</a> </td>
+                <td><a href="/Category/UpdateCategory/@item.CategoryId" class="btn btn-info">Güncelle</a> </td>
+            </tr>
+        }
+
+
+
     </table>
 
     <br />

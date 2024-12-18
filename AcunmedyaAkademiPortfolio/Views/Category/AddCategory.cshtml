@@ -1,4 +1,4 @@
-﻿
+﻿@model AcunmedyaAkademiPortfolio.Models.TblCategory
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -10,7 +10,7 @@
 
     <form method="post">
         <label>Kategori Adı</label>
-        <input type="text" class="form-control" />
+        <input type="text" name="CategoryName" class="form-control" />
         <br />
         <button class="btn btn-primary">Kaydet</button>
 
