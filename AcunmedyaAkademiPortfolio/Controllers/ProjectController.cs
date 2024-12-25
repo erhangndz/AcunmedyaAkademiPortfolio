@@ -40,8 +40,35 @@ namespace AcunmedyaAkademiPortfolio.Controllers
         [HttpPost]
         public ActionResult AddProject(TblProject model)
         {
-            //ekleme işlemleri
+            var categoryList = db.TblCategories.ToList();
 
+            List<SelectListItem> categories = (from x in categoryList
+                                               select new SelectListItem
+                                               {
+                                                   Text = x.CategoryName,
+                                                   Value = x.CategoryId.ToString()
+                                               }).ToList();
+
+            ViewBag.categories = categories;
+
+
+            if (ModelState.IsValid)
+            {
+                db.TblProjects.Add(model);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+
+            
+        }
+
+        public ActionResult DeleteProject(int id)
+        {
+            var value = db.TblProjects.Find(id);
+            db.TblProjects.Remove(value);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

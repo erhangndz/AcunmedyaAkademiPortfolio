@@ -11,14 +11,27 @@ namespace AcunmedyaAkademiPortfolio.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TblProject
     {
         public int ProjectId { get; set; }
+
+
+        //Validation  ==> validasyon kurallarý DataAnnotations
+        [Required(ErrorMessage ="Proje Adý boþ býrakýlamaz.")]
+        [MinLength(5,ErrorMessage ="Proje Adý en az 5 karakter olmalýdýr.")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "Proje Açýklamasý boþ býrakýlamaz.")]
         public string Description { get; set; }
+
+        [Required(ErrorMessage = "Görsel Url boþ býrakýlamaz.")]
         public string ImageUrl { get; set; }
+
+        [Required(ErrorMessage = "Github Url boþ býrakýlamaz.")]
         public string GithubUrl { get; set; }
+        [Required(ErrorMessage = "Kategori boþ býrakýlamaz.")]
         public Nullable<int> CategoryId { get; set; }
     
         public virtual TblCategory TblCategory { get; set; }
