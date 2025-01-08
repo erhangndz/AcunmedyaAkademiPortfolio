@@ -72,6 +72,53 @@ namespace AcunmedyaAkademiPortfolio.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public ActionResult UpdateProject(int id)
+        {
+            var categoryList = db.TblCategories.ToList();
+
+            List<SelectListItem> categories = (from x in categoryList
+                                               select new SelectListItem
+                                               {
+                                                   Text = x.CategoryName,
+                                                   Value = x.CategoryId.ToString()
+                                               }).ToList();
+
+            ViewBag.categories = categories;
+            var value = db.TblProjects.Find(id);
+            return View(value);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateProject(TblProject model)
+        {
+            var categoryList = db.TblCategories.ToList();
+
+            List<SelectListItem> categories = (from x in categoryList
+                                               select new SelectListItem
+                                               {
+                                                   Text = x.CategoryName,
+                                                   Value = x.CategoryId.ToString()
+                                               }).ToList();
+
+            ViewBag.categories = categories;
+
+            var value = db.TblProjects.Find(model.ProjectId);
+            value.Name= model.Name;
+            value.Description = model.Description;
+            value.CategoryId = model.CategoryId;
+            value.GithubUrl = model.GithubUrl;
+            value.ImageUrl = model.ImageUrl;
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
 
     }
 }
